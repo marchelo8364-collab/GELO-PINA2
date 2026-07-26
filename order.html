@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pedido — Gelo Pina</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Banner com imagem 6.png como fundo */
+    .order-banner {
+      background-image: url('6.png');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      position: relative;
+      padding: 4rem 0;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      border-radius: 16px;
+      margin-bottom: 2rem;
+    }
+    .order-banner .overlay {
+      background: rgba(255,255,255,0.75);
+      padding: 2rem;
+      border-radius: 20px;
+      backdrop-filter: blur(2px);
+      max-width: 700px;
+    }
+    .order-banner .overlay h1 {
+      color: #1a3a6b;
+      font-size: 2.2rem;
+      margin-bottom: 0.3rem;
+    }
+    .order-banner .overlay p {
+      color: #2d3748;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    /* Estilos específicos da página de pedido */
+    .order-page main {
+      padding: 1.5rem 0;
+    }
+
+    .order-page .page-subtitle {
+      color: #4b5563;
+      max-width: 700px;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    /* Layout principal: produtos à esquerda, resumo à direita */
+    .order-layout {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* Lista de produtos (cards) */
+    .product-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    /* Cada card de produto – mesmo estilo dos about cards */
+    .product-card {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      border-radius: 16px;
+      padding: 0.8rem 1.2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(255,255,255,0.3);
+      transition: transform 0.2s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Gradientes: do mais claro para o mais escuro */
+    .product-card.card-1 { background: linear-gradient(180deg, #e0f2fe, #bae6fd); }  /* Bala - mais claro */
+    .product-card.card-2 { background: linear-gradient(180deg, #dbeafe, #93c5fd); }  /* Cubo */
+    .product-card.card-3 { background: linear-gradient(180deg, #bfdbfe, #60a5fa); }  /* Floco */
+    .product-card.card-4 { background: linear-gradient(180deg, #93c5fd, #3b82f6); }  /* 5L */
+    .product-card.card-5 { background: linear-gradient(180deg, #67e8f9, #1d4ed8); }  /* 10L - mais escuro */
+
+    .product-card .card-img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      background: rgba(255,255,255,0.6);
+      border-radius: 10px;
+      padding: 0.3rem;
+    }
+
+    .product-card .card-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .product-card .card-info .name {
+      font-weight: 700;
+      color: #1a3a6b;
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    .product-card .card-info .price {
+      font-size: 0.85rem;
+      color: #1a3a6b;
+    }
+
+    .product-card .card-info .price .normal {
+      font-weight: 700;
+    }
+
+    .product-card .card-info .price .bulk {
+      font-weight: 400;
+      font-size: 0.75rem;
+      color: #4b5563;
+    }
+
+    .product-card .qty-control {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .product-card .qty-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(26, 58, 107, 0.15);
+      color: #1a3a6b;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-card .qty-btn:hover {
+      background: rgba(26, 58, 107, 0.30);
+    }
+
+    .product-card .qty-input {
+      width: 38px;
+      text-align: center;
+      border: 1px solid rgba(26, 58, 107, 0.2);
+      border-radius: 6px;
+      padding: 0.2rem;
+      font-weight: 600;
+      color: #1a3a6b;
+      background: white;
+    }
+
+    /* Resumo à direita */
+    .summary-box {
+      background: white;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+      border: 1px solid #eef2f6;
+      position: sticky;
+      top: 20px;
+    }
+
+    .summary-box h2 {
+      color: #1a3a6b;
+      font-size: 1.4rem;
+      margin-top: 0;
+      border-bottom: 2px solid #eef2f6;
+      padding-bottom: 0.5rem;
+    }
+
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid #f0f4f8;
+    }
+
+    .summary-line.total {
+      font-weight: 700;
+      font-size: 1.2rem;
+      border-bottom: none;
+      padding-top: 0.8rem;
+      color: #1a3a6b;
+    }
+
+    .summary-line .value {
+      font-weight: 600;
+    }
+
+    .delivery-option {
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .delivery-option label {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 500;
+      color: #1a3a6b;
+      cursor: pointer;
+    }
+
+    .delivery-note {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-top: 0.3rem;
+    }
+
+    .delivery-note.warning {
+      color: #b91c1c;
+    }
+
+    /* Ícones */
+    .icon-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin: 1.2rem 0;
+    }
+
+    .icon-box {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 0.6rem;
+      text-align: center;
+      border: 1px solid #eef2f6;
+    }
+
+    .icon-box img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 0.2rem;
+    }
+
+    .icon-box span {
+      font-size: 0.75rem;
+      color: #1a3a6b;
+      font-weight: 500;
+    }
+
+    /* Método de pagamento */
+    .payment-method {
+      margin: 1rem 0;
+    }
+
+    .payment-method label {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-weight: 500;
+      color: #1a3a6b;
+    }
+
+    .payment-method select {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #d1d9e6;
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+
+    /* Contactos */
+    .contact-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin: 1rem 0;
+    }
+
+    .contact-fields label {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      font-weight: 500;
+      color: #1a3a6b;
+      font-size: 0.9rem;
+    }
+
+    .contact-fields input {
+      padding: 0.5rem 0.7rem;
+      border: 1px solid #d1d9e6;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      width: 100%;
+    }
+
+    .contact-fields input:focus {
+      outline: 2px solid #1a3a6b;
+      outline-offset: 1px;
+    }
+
+    .btn-buy {
+      background: #1a3a6b;
+      color: white;
+      border: none;
+      padding: 0.8rem;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.2s, transform 0.2s;
+      margin-top: 1rem;
+    }
+
+    .btn-buy:hover {
+      background: #0f2a4f;
+      transform: translateY(-2px);
+    }
+
+    .btn-buy:disabled {
+      background: #94a3b8;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Confirmação */
+    .confirmation {
+      background: #e0f2fe;
+      border-radius: 12px;
+      padding: 1rem;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .confirmation.visible {
+      display: block;
+    }
+
+    .confirmation h3 {
+      color: #1a3a6b;
+      margin: 0 0 0.3rem;
+    }
+
+    .confirmation p {
+      margin: 0.3rem 0;
+      color: #1e293b;
+    }
+
+    /* Responsividade */
+    @media (max-width: 900px) {
+      .order-layout {
+        grid-template-columns: 1fr;
+      }
+      .product-card {
+        grid-template-columns: 70px 1fr auto;
+      }
+      .product-card .card-img {
+        width: 56px;
+        height: 56px;
+      }
+      .summary-box {
+        position: static;
+      }
+      .order-banner {
+        min-height: 200px;
+        padding: 2rem 0;
+      }
+      .order-banner .overlay {
+        padding: 1rem;
+      }
+      .order-banner .overlay h1 {
+        font-size: 1.6rem;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .product-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .product-card .qty-control {
+        justify-content: center;
+      }
+      .icon-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="order-page">
+  <nav class="nav">
+    <div class="nav-inner container">
+      <a class="brand" href="index.html">Gelo Pina</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="products.html">Produtos</a></li>
+        <li><a href="order.html" aria-current="page">Pedido</a></li>
+        <li><a href="contact.html">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- ===== BANNER COM 6.png ===== -->
+    <div class="order-banner">
+      <div class="container" style="width:100%;">
+        <div class="overlay">
+          <h1>🛒 Carrinho de Compras</h1>
+          <p>Selecione a quantidade de cada produto. <strong>Desconto especial:</strong> se a soma dos sacos de cubo (bala + normal) for ≥ 10, o preço de cada um desses sacos baixa para 130 CVE. Os restantes produtos mantêm o preço normal. A entrega em Praia é gratuita.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="order-layout">
+      <!-- Coluna esquerda: produtos -->
+      <div class="product-list" id="productList">
+        <!-- Preenchido pelo JavaScript -->
+      </div>
+      <aside class="summary-box">
+        <h2>Resumo do Pedido</h2>
+        <div id="summaryLines">
+          <div class="summary-line"><span>Subtotal</span><span class="value" id="subtotalValue">0 CVE</span></div>
+          <div class="summary-line"><span>Entrega</span><span class="value" id="deliveryValue">Grátis</span></div>
+          <div class="summary-line total"><span>Total</span><span class="value" id="totalValue">0 CVE</span></div>
+        </div>
+        <!-- Opção de entrega (checkbox) -->
+        <div class="delivery-option">
+            <label>
+                <input type="checkbox" id="insidePraia" checked />
+                Entrega dentro de Praia
+            </label>
+            <span id="deliveryNote" class="delivery-note">(grátis)</span>
+        </div>
+        <div id="outsideNote" class="delivery-note warning" style="display:none;">
+            ⚠️ Entregas fora de Praia podem ter custo adicional – o valor será confirmado após contacto.
+        </div>
+
+        <!-- ===== SELEÇÃO DE ZONA (único) ===== -->
+        <div style="margin: 1rem 0;">
+            <label for="zona" style="font-weight: 600; color: #1a3a6b; display: block; margin-bottom: 0.3rem;">
+                Zona:
+            </label>
+            <select id="zona" style="width: 100%; padding: 0.5rem; border: 1px solid #d1d9e6; border-radius: 8px; font-size: 0.95rem;">
+                <!-- Preenchido via JavaScript -->
+            </select>
+        </div>
+
+
+        <!-- Ícones -->
+        <div class="icon-row">
+          <div class="icon-box">
+            <img src="deli.png" alt="Entrega na Porta" />
+            <span>Entrega na Porta</span>
+          </div>
+          <div class="icon-box">
+            <img src="pay.png" alt="Pagamento Seguro" />
+            <span>Pagamento Seguro</span>
+          </div>
+        </div>
+
+        <!-- Método de pagamento -->
+        <div class="payment-method">
+          <label for="paymentMethod">Método de Pagamento</label>
+          <select id="paymentMethod">
+            <option value="presencial-dinheiro">Presencial (Dinheiro Físico)</option>
+            <option value="presencial-cartao">Presencial (Cartão24)</option>
+            <option value="transferencia">Transferência Bancária</option>
+          </select>
+        </div>
+
+        <!-- Dados do cliente -->
+        <div class="contact-fields">
+          <label>
+            Nome completo *
+            <input type="text" id="custName" placeholder="Ex: João Silva" required />
+          </label>
+          <label>
+            Telefone / WhatsApp *
+            <input type="text" id="custPhone" placeholder="Ex: 999 99 99" required />
+          </label>
+          <label>
+            Email (opcional)
+            <input type="email" id="custEmail" placeholder="exemplo@email.com" />
+          </label>
+        </div>
+
+        <button class="btn-buy" id="buyButton">Confirmar Pedido</button>
+
+        <!-- Área de confirmação -->
+        <div id="confirmation" class="confirmation">
+          <h3>✅ Pedido Confirmado!</h3>
+          <p><strong>Nº de Pedido:</strong> <span id="orderId"></span></p>
+          <p>O seu pedido foi registado. Irá receber uma confirmação por telefone em breve.</p>
+          <p>Obrigado por escolher a Gelo Pina!</p>
+        </div>
+      </aside>
+      
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Gelo Pina</strong>
+        <p>Pickup: Varzea, perto do Embaixada dos EUA, na casa de madeira roxo. — Entregas dentro de Praia gratuitas.</p>
+      </div>
+      <div>
+        <p>Perguntas? <a href="contact.html">Contacte-nos</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

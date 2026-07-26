@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Produtos — Gelo Pina</title>
+  <meta name="description" content="Conheça os nossos produtos de gelo de alta qualidade: sacos de 2kg, garrafas de 5L e 10L, gelo em cubos e flocos." />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="about-page">  <!-- ← MUDAR DE products-page PARA about-page -->
+
+  <nav class="nav" aria-label="Navegação principal">
+    <div class="nav-inner container">
+      <a class="brand" href="index.html">🧊 Gelo Pina</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="products.html" aria-current="page">Produtos</a></li>  <!-- ← ADICIONAR -->
+        <li><a href="order.html">Pedido</a></li>
+        <li><a href="contact.html">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <header class="hero">
+      <!-- O header estava a envolver tudo, corrigir estrutura -->
+    </header>
+
+    <section class="about-cards-section reveal">
+      <div class="section-head">
+        <h2>Nossos Produtos</h2>
+        <p>Toque num card para expandir informações, ver uma imagem close-up e aceder a detalhes com animação suave.</p>
+      </div>
+      <div class="cards-grid" id="aboutCards">
+        <!-- Card 1 - Saco 2kg -->
+        <article class="hero-card about-card card-1" data-card="1" tabindex="0">
+          <div class="hero-visual">
+            <img class="badge-icon" src="4.png" alt="Filtro" />
+            <img class="visual-graphic" src="c1.png" alt="Saco Gelo 2kg" />
+            <div class="card-label">Saco Gelo (2kg)</div>
+          </div>
+        </article>
+
+        <!-- Card 2 - Garrafa 5L -->
+        <article class="hero-card about-card card-2" data-card="2" tabindex="0">
+          <div class="hero-visual">
+            <img class="badge-icon" src="5li.png" alt="Entrega" />
+            <img class="visual-graphic" src="c2.png" alt="Garrafa 5L" />
+            <div class="card-label">Garrafa 5L</div>
+          </div>
+        </article>
+
+        <!-- Card 3 - Garrafa 10L -->
+        <article class="hero-card about-card card-3" data-card="3" tabindex="0">
+          <div class="hero-visual">
+            <img class="badge-icon" src="10li.png" alt="Eventos" />
+            <img class="visual-graphic" src="c3.png" alt="Garrafa 10L" />
+            <div class="card-label">Garrafa 10L</div>
+          </div>
+        </article>
+
+        <!-- Card 4 - Cubo 2cm -->
+        <article class="hero-card about-card card-4" data-card="4" tabindex="0">
+          <div class="hero-visual">
+            <img class="badge-icon" src="cubo.png" alt="Cubo" />
+            <img class="visual-graphic" src="c5.png" alt="Saco Gelo Cubo 2kg" />
+            <div class="card-label">Saco Gelo Cubo (2kg)</div>
+          </div>
+        </article>
+
+        <!-- Card 5 - Gelo em Flocos -->
+        <article class="hero-card about-card card-5" data-card="5" tabindex="0">
+          <div class="hero-visual">
+            <img class="badge-icon" src="FLOCO.JPG" alt="Floco" />
+            <img class="visual-graphic" src="c4.png" alt="Gelo Floco" />
+            <div class="card-label">Gelo Floco</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="detail-shell hidden" id="detailView" aria-live="polite"></section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>🧊 Gelo Pina</strong>
+        <p>Pickup: Várzea, perto da Embaixada dos EUA, na casa de madeira roxo. — Entregas dentro de Praia gratuitas.</p>
+      </div>
+      <div>
+        <p>📞 <a href="contact.html">Contacte-nos</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

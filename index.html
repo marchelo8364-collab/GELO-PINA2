@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+  <title>Gelo Pina — Gelo de Qualidade em Cabo Verde</title>
+  <meta name="description" content="Gelo Pina - Produção e comercialização de gelo de alta qualidade em sacos de 2kg e garrafas de 5L e 10L. Entregas em toda a Praia." />
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ===== RESET & BASE ===== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      background: linear-gradient(160deg, #f0f9ff, #fff7f3);
+      color: #0f172a;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      width: 100%;
+    }
+
+    /* ===== BANNER HERO ===== */
+    .hero-banner {
+      background-image: url('6.png');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      position: relative;
+      padding: 2rem 0;
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      border-radius: 16px;
+      margin-bottom: 1.5rem;
+      width: 100%;
+    }
+
+    .hero-banner .overlay {
+      background: rgba(255, 255, 255, 0.88);
+      padding: 1.5rem 2rem;
+      border-radius: 20px;
+      backdrop-filter: blur(2px);
+      max-width: 750px;
+      width: 100%;
+    }
+
+    .hero-banner .overlay .eyebrow {
+      display: inline-block;
+      margin-bottom: 0.5rem;
+      padding: 0.3rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(0, 119, 200, 0.12);
+      color: #0077c8;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.3px;
+    }
+
+    .hero-banner .overlay h1 {
+      font-size: 2.2rem;
+      color: #1a3a6b;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .hero-banner .overlay p {
+      font-size: 1rem;
+      color: #2d3748;
+      line-height: 1.6;
+    }
+
+    .hero-banner .overlay .hero-cta {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* ===== LAYOUT HORIZONTAL ===== */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.8fr 1.2fr;
+      gap: 1.5rem;
+      padding-bottom: 2rem;
+      align-items: start;
+      flex: 1;
+    }
+
+    /* ===== SECÇÃO SOBRE ===== */
+    .about-grid-special {
+      display: grid;
+      grid-template-columns: 1fr 2.2fr;
+      gap: 1.5rem;
+      align-items: center;
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+      border: 1px solid #eef2f6;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-grid-special .about-image {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 9 / 21;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      max-height: 400px;
+      max-width: 200px;
+      margin: 0 auto;
+    }
+
+    .about-grid-special .about-text h2 {
+      color: #1a3a6b;
+      font-size: 1.5rem;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .about-grid-special .about-text p {
+      color: #4b5563;
+      line-height: 1.7;
+      font-size: 0.95rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .about-grid-special .about-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ===== FEATURES ===== */
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 0.8rem 1rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(3, 105, 161, 0.06);
+      border: 1px solid #eef2f6;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .feature-card:active {
+      transform: scale(0.98);
+    }
+
+    .feature-card h3 {
+      color: #1a3a6b;
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .feature-card p {
+      color: #4b5563;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar h2 {
+      color: #1a3a6b;
+      font-size: 1.2rem;
+      margin-bottom: 0.6rem;
+      border-bottom: 2px solid #eef2f6;
+      padding-bottom: 0.4rem;
+    }
+
+    .video-container {
+      margin-top: 0.8rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      background: #f8fafc;
+      border: 1px solid #eef2f6;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ===== REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 700ms cubic-bezier(0.2, 0.9, 0.2, 1), transform 700ms cubic-bezier(0.2, 0.9, 0.2, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ===== RESPONSIVIDADE ===== */
+
+    /* Tablets */
+    @media (max-width: 1024px) {
+      .main-grid {
+        grid-template-columns: 1.5fr 1fr;
+        gap: 1.2rem;
+      }
+    }
+
+    /* Tablets pequenos / Mobile grande */
+    @media (max-width: 900px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .about-grid-special {
+        grid-template-columns: 1fr 1.5fr;
+        padding: 1.2rem;
+      }
+
+      .features {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-banner {
+        min-height: 260px;
+        padding: 1.5rem 0;
+        border-radius: 12px;
+      }
+
+      .hero-banner .overlay {
+        padding: 1.2rem 1.5rem;
+        max-width: 95%;
+      }
+
+      .hero-banner .overlay h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    /* Telemóveis */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 0.8rem;
+      }
+
+      .about-grid-special {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 1rem;
+      }
+
+      .about-grid-special .about-image {
+        max-width: 200px;
+        max-height: 300px;
+        margin: 0 auto 0.5rem;
+      }
+
+      .about-grid-special .about-text h2 {
+        font-size: 1.3rem;
+      }
+
+      .about-grid-special .about-text p {
+        font-size: 0.9rem;
+        text-align: left;
+      }
+
+      .features {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+      }
+
+      .feature-card {
+        padding: 0.6rem 0.8rem;
+      }
+
+      .feature-card h3 {
+        font-size: 0.85rem;
+      }
+
+      .feature-card p {
+        font-size: 0.8rem;
+      }
+
+      .hero-banner .overlay h1 {
+        font-size: 1.5rem;
+      }
+
+      .hero-banner .overlay p {
+        font-size: 0.9rem;
+      }
+
+      .hero-banner .overlay .hero-cta {
+        justify-content: center;
+      }
+
+      .hero-banner .overlay .hero-cta .btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
+      }
+
+      .sidebar {
+        padding-top: 0.5rem;
+      }
+
+      .sidebar h2 {
+        font-size: 1.1rem;
+      }
+
+      .video-container {
+        margin-top: 0.6rem;
+      }
+    }
+
+    /* Telemóveis muito pequenos */
+    @media (max-width: 480px) {
+      .hero-banner {
+        min-height: 200px;
+        padding: 1rem 0;
+        border-radius: 10px;
+      }
+
+      .hero-banner .overlay {
+        padding: 0.8rem 1rem;
+      }
+
+      .hero-banner .overlay h1 {
+        font-size: 1.2rem;
+      }
+
+      .hero-banner .overlay p {
+        font-size: 0.85rem;
+      }
+
+      .hero-banner .overlay .eyebrow {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.6rem;
+      }
+
+      .hero-banner .overlay .hero-cta .btn {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
+      }
+
+      .about-grid-special {
+        padding: 0.8rem;
+      }
+
+      .about-grid-special .about-image {
+        max-width: 150px;
+        max-height: 220px;
+      }
+
+      .about-grid-special .about-text h2 {
+        font-size: 1.1rem;
+      }
+
+      .about-grid-special .about-text p {
+        font-size: 0.85rem;
+      }
+
+      .features {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+      }
+
+      .feature-card {
+        padding: 0.5rem 0.6rem;
+        border-radius: 8px;
+      }
+
+      .feature-card h3 {
+        font-size: 0.8rem;
+      }
+
+      .feature-card p {
+        font-size: 0.75rem;
+      }
+
+      .sidebar h2 {
+        font-size: 1rem;
+      }
+
+      .video-container {
+        border-radius: 8px;
+      }
+    }
+
+    /* Dispositivos muito pequenos (ex: 320px) */
+    @media (max-width: 380px) {
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-banner .overlay h1 {
+        font-size: 1rem;
+      }
+
+      .hero-banner .overlay .hero-cta {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-banner .overlay .hero-cta .btn {
+        text-align: center;
+      }
+    }
+
+    /* Landscape em telemóveis */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .hero-banner {
+        min-height: 180px;
+        padding: 0.8rem 0;
+      }
+
+      .hero-banner .overlay {
+        padding: 0.6rem 1rem;
+      }
+
+      .hero-banner .overlay h1 {
+        font-size: 1.2rem;
+      }
+
+      .hero-banner .overlay p {
+        font-size: 0.8rem;
+      }
+
+      .about-grid-special {
+        padding: 0.8rem;
+      }
+
+      .about-grid-special .about-image {
+        max-height: 180px;
+      }
+    }
+
+    /* Touch-friendly: aumentar área de clique */
+    .btn,
+    .nav-links a,
+    .feature-card {
+      touch-action: manipulation;
+      cursor: pointer;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .nav-links a {
+      padding: 0.6rem 0.8rem;
+    }
+
+    /* Melhorar scroll suave */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Evitar zoom indesejado em inputs */
+    input,
+    select,
+    textarea {
+      font-size: 16px !important;
+    }
+  </style>
+</head>
+<body class="home">
+
+  <!-- ===== NAVEGAÇÃO ===== -->
+  <nav class="nav" aria-label="Navegação principal">
+    <div class="nav-inner container">
+      <a class="brand" href="index.html" aria-current="page">🧊 Gelo Pina</a>
+      <button class="nav-toggle" aria-label="Abrir menu" style="display:none; background:none; border:none; color:white; font-size:1.5rem; cursor:pointer;">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html" aria-current="page">Início</a></li>
+        <li><a href="products.html">Produtos</a></li>
+        <li><a href="order.html">Pedido</a></li>
+        <li><a href="contact.html">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== HERO BANNER ===== -->
+  <header class="hero-banner" role="banner">
+    <div class="container">
+      <div class="hero-text reveal overlay">
+        <span class="eyebrow">🧊 Gelo de Qualidade</span>
+        <h1>Gelo — Sacos de 2kg &amp; Garrafas de 5L e 10L</h1>
+        <p>
+          Produzido com água filtrada. Entregamos em toda a Praia em menos de 1 hora para encomendas de 5 ou mais sacos. Para encomendas menores, pode levantar na Várzea.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="products.html">Ver Produtos</a>
+          <a class="btn btn-outline" href="contact.html">Contacte-nos</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+  <main class="container main-grid">
+
+    <!-- ===== COLUNA ESQUERDA ===== -->
+    <div class="left-col">
+
+      <!-- ===== SECÇÃO SOBRE ===== -->
+      <section class="about-grid-special reveal" aria-labelledby="sobre-titulo">
+        <img src="card1.png" alt="Gelo Pina - Produtos de qualidade" class="about-image" style="background:#f0f7ff; padding:0.5rem;" loading="lazy">
+        <div class="about-text">
+          <h2 id="sobre-titulo">Sobre a Gelo Pina</h2>
+          <p>
+            A <strong>Pina Serviços e Comércio, Lda.</strong> é uma empresa jovem, fundada em 2023, especializada na produção e comercialização de gelo de alta qualidade. O nosso objetivo é fornecer um produto seguro, higiénico e confiável para clientes particulares e empresas, garantindo um abastecimento contínuo e eficiente.
+          </p>
+          <p>
+            Atendemos restaurantes, bares, hotéis, supermercados, organizadores de eventos e outros negócios que dependem de um fornecimento regular de gelo para as suas atividades.
+          </p>
+          <p>
+            O nosso compromisso é oferecer <strong>qualidade, pontualidade e um atendimento personalizado</strong>, estabelecendo relações de confiança com os clientes e contribuindo para o crescimento dos seus negócios.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===== FEATURES ===== -->
+      <section class="features" aria-label="Diferenciais">
+        <div class="feature-card">
+          <h3>🚚 Entrega rápida</h3>
+          <p>Entregamos em toda a Praia em menos de 1 hora. Frete grátis para encomendas de 5+ sacos.</p>
+        </div>
+        <div class="feature-card">
+          <h3>📦 Embalagem segura</h3>
+          <p>Sacos selados e rotulados, armazenados em condições seguras.</p>
+        </div>
+        <div class="feature-card">
+          <h3>💧 Água filtrada</h3>
+          <p>Produzido com água filtrada, garantindo um gelo puro e de alta qualidade.</p>
+        </div>
+        <div class="feature-card">
+          <h3>🏪 Pickup em Várzea</h3>
+          <p>Levantamento disponível na Várzea, perto da Embaixada dos EUA, na casa de madeira roxo.</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" aria-label="Produtos e informações adicionais">
+      <h2>📦 Produtos</h2>
+
+      <div class="video-container">
+        <video autoplay muted loop playsinline loading="lazy">
+          <source src="v9.mp4" type="video/mp4">
+          O seu navegador não suporta vídeos HTML5.
+        </video>
+      </div>
+
+      <div class="feature-card" style="margin-top:0.8rem;">
+        <h3>💰 Preços competitivos</h3>
+        <p style="font-size:0.85rem; color:#4b5563; margin:0;">
+          Desde o <strong>cubo perfeito de 2cm</strong> (8g) até às <strong>garrafas de 5L e 10L</strong>, temos a solução ideal para si.
+        </p>
+      </div>
+
+      <div class="video-container" style="margin-top:0.8rem;">
+        <video autoplay muted loop playsinline loading="lazy">
+          <source src="v8.mp4" type="video/mp4">
+          O seu navegador não suporta vídeos HTML5.
+        </video>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- ===== RODAPÉ ===== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div>
+        <strong>🧊 Gelo Pina</strong>
+        <p>Pickup: Várzea, perto da Embaixada dos EUA, na casa de madeira roxo. — Entregas dentro de Praia gratuitas.</p>
+      </div>
+      <div>
+        <p>📞 <a href="contact.html">Contacte-nos</a></p>
+        <p style="font-size:0.75rem; color:#6b7280; margin-top:0.2rem;">
+          &copy; 2026 Gelo Pina. Todos os direitos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
