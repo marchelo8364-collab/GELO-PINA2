@@ -44,7 +44,7 @@
       ],
       tags: [
         '<img src="R3.png" alt="Reutilizável" /> Reutilizável',
-        '<img src="tampa.png" alt="Tampa de Rosca" /> Tampa de Rosca',
+        '<img src="tampa.PNG" alt="Tampa de Rosca" /> Tampa de Rosca',
         '<img src="FREEZER.png" alt="Fácil Guardar" /> Fácil Guardar'
       ],
       price: '80 esc'
@@ -84,7 +84,7 @@
       tags: [
         '<img src="cubo.png" alt="Cubo Perfeito" /> Cubo Perfeito',
         '<img src="filtro.png" alt="Água Filtrada" /> Água Filtrada',
-        '<img src="VERSATIL.PNG" alt="Uso Versátil" /> Uso Versátil'
+        '<img src="versatil.png" alt="Uso Versátil" /> Uso Versátil'
       ],
       price: '150 esc (130 esc 10+)'
     },
@@ -101,7 +101,7 @@
         'Embalagem: Saco resistente'
       ],
       tags: [
-        '<img src="FLOCO.JPG" alt="Flocos Finos" /> Flocos Finos',
+        '<img src="FLOCO.jpg" alt="Flocos Finos" /> Flocos Finos',
         '<img src="filtro.png" alt="Água Filtrada" /> Água Filtrada',
         '<img src="FREEZER.png" alt="Conservação" /> Conservação'
       ],
