@@ -84,7 +84,7 @@
       tags: [
         '<img src="cubo.png" alt="Cubo Perfeito" /> Cubo Perfeito',
         '<img src="filtro.png" alt="Água Filtrada" /> Água Filtrada',
-        '<img src="versatil.png" alt="Uso Versátil" /> Uso Versátil'
+        '<img src="VERSATIL.PNG" alt="Uso Versátil" /> Uso Versátil'
       ],
       price: '150 esc (130 esc 10+)'
     },
